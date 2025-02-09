@@ -31,15 +31,17 @@ jobs:
           _site
           !path/**/*.pillar
         retention-days: 5
-
-  agenda_build:      
-    uses: pillar-markup/Microdown-Agenda/.github/workflows/main.yml@main
-    with:
-      agenda_filename: 2024-Conference/agenda-workshop.md;2024-Conference/agenda.md;2023-Conference/agenda.md;2023-Conference/agenda-workshop.md;2022-Conference/agenda.md;2022-Conference/agenda-workshop.md
-
+        
+        
+  agenda_build:
+   uses: pillar-markup/Microdown-Agenda/.github/workflows/main.yml@main
+   with:
+     agenda_filename: 2024-Conference/agenda-workshop.md;2024-Conference/agenda.md;2023-Conference/agenda.md;2023-Conference/agenda-workshop.md;2022-Conference/agenda.md;2022-Conference/agenda-workshop.md
+  
+    
   deploy:
     runs-on: ubuntu-latest
-    needs: [ecstatic_build, agenda_build]
+    needs: [ecstatic_build]
     
     steps:
     # needed by JamesIves/github-pages-deploy-action
